@@ -2,20 +2,16 @@ trigger:
 - main
 
 pool: jekylle
-    # Use a Microsoft-hosted agent with JDK pre-installed
+
 
 steps:
-- task: JavaToolInstaller@0  # Install JDK if not available
-  inputs:
-    versionSpec: '21'
-    jdkArchitectureOption: 'x64'
 
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '21'  # Ensure this matches the installed JDK
+    jdkVersionOption: '21' 
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
